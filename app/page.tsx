@@ -1,65 +1,125 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { motion } from "framer-motion";
+
+export default function Portfolio() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen relative bg-black text-white overflow-hidden">
+      {/* Glow Effect */}
+<div className="absolute top-0 left-0 w-72 h-72 bg-purple-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+
+<div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+
+      {/* Background Glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-black to-blue-900 opacity-60 blur-3xl"></div>
+
+
+      {/* Content */}
+      <div className="relative z-10 p-6">
+
+        {/* Hero */}
+        <section className="text-center py-24">
+          <motion.h1
+            initial={{ opacity: 0, y: -60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-6xl font-bold"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Daksh Jangir
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="text-xl mt-4 text-gray-300"
           >
-            Documentation
-          </a>
-        </div>
-      </main>
+            AI Driven DevOps Engineer 🚀
+          </motion.p>
+        </section>
+
+        {/* Skills */}
+        <section className="py-16">
+          <h2 className="text-3xl text-center mb-10">Skills</h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {["Python", "Java", "Git", "Docker"].map((skill, i) => (
+              <motion.div
+                key={skill}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.2 }}
+                className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl text-center hover:scale-110 transition"
+              >
+                {skill}
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* DevOps */}
+<section className="py-16">
+  <h2 className="text-3xl text-center mb-10">DevOps Stack</h2>
+
+  <div className="flex flex-wrap justify-center gap-4">
+    {["Docker", "CI/CD", "Linux", "GitHub Actions"].map((tool) => (
+      <div className="bg-blue-500/20 px-6 py-3 rounded-full">
+        {tool}
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* Learning Tracker */}
+<section className="py-16 text-center">
+  <h2 className="text-3xl mb-6">Learning Journey</h2>
+
+  <div className="space-y-3 text-gray-300">
+    <p>📅 Week 1: Started Next.js & Portfolio</p>
+    <p>📅 Week 2: Learning Python & Git</p>
+    <p>📅 Week 3: Exploring AI + DevOps</p>
+  </div>
+</section>
+
+{/* Projects */}
+<section className="py-16">
+  <h2 className="text-3xl text-center mb-10">Projects</h2>
+
+  <div className="grid md:grid-cols-2 gap-6">
+    
+    <div className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl hover:scale-105 transition duration-300">
+      <h3 className="text-xl font-bold">Portfolio Website</h3>
+      <p className="text-gray-300 mt-2">
+        Built using Next.js, Tailwind CSS and animations.
+      </p>
     </div>
+
+    <div className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl">
+      <h3 className="text-xl font-bold">Coming Soon</h3>
+      <p className="text-gray-300 mt-2">
+        AI and DevOps based projects will be added.
+      </p>
+    </div>
+
+  </div>
+</section>
+        {/* Contact */}
+<section className="py-16 text-center">
+  <h2 className="text-3xl mb-4">Connect With Me</h2>
+
+  <div className="flex justify-center gap-6">
+    <a href="https://github.com/daaksh-7" target="_blank">
+      GitHub
+    </a>
+
+    <a href="https://linkedin.com/in/yourprofile" target="_blank">
+      LinkedIn
+    </a>
+  </div>
+</section>
+
+      </div>
+    </div>
+    
   );
 }
